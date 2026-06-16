@@ -45,7 +45,7 @@ async function main() {
         getRecentTradesCount(symbol),
       ]);
 
-      if (spreadPct !== null && spreadPct > 0.1 && tradesLastMinute >= 10) {
+      if (spreadPct !== null && spreadPct > 0.05 && tradesLastMinute >= 10) {
         analysis.spreadPct = spreadPct;
         analysis.tradesLastMinute = tradesLastMinute;
 
