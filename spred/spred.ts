@@ -1,6 +1,10 @@
 import * as fs from "fs";
 import * as path from "path";
-import { getRecentTradesCount, getSpotPairs, getSpreadPct } from "./get_clines";
+import {
+  getRecentTradesCount,
+  getSpotPairs,
+  getSpreadPct,
+} from "../api_mex/get_clines";
 import { analyzeMarket, type MarketRegime } from "./analyze";
 
 interface ScreenResult {
@@ -72,7 +76,7 @@ async function main() {
 }
 
 function saveTextReport(results: ScreenResult[]) {
-  const filePath = path.resolve(process.cwd(), "report.txt");
+  const filePath = path.resolve(process.cwd(), "spred.txt");
 
   // Сортируем от самого явного флета (минимальный фактор тренда)
   results.sort((a, b) => a.data.trendFactor - b.data.trendFactor);

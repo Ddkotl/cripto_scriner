@@ -1,4 +1,4 @@
-import { getKlines } from "./get_clines";
+import { getKlines } from "../api_mex/get_clines";
 
 export interface MarketRegime {
   anchor: number;
@@ -60,7 +60,7 @@ export async function analyzeMarket(
 
     // Ваше условие флета
     const isSideways =
-      rangePct >= 0.05 && rangePct <= 1.2 && trendFactor <= 0.3;
+      rangePct >= 0.05 && rangePct <= 1.5 && trendFactor <= 0.5;
     return {
       anchor,
       range,
