@@ -60,7 +60,7 @@ export async function analyzeMarket(
 
     // Ваше условие флета
     const isSideways =
-      rangePct >= 0.05 && rangePct <= 1.5 && trendFactor <= 0.5;
+      rangePct >= 0.05 && rangePct <= 2 && trendFactor <= 0.3;
     return {
       anchor,
       range,
