@@ -9,7 +9,7 @@ const client = new RestClientV5({
 });
 
 const CONCURRENCY_LIMIT = 10;
-const INTERVAL = "15";
+const INTERVAL = "5";
 
 // файл результата
 const OUTPUT_FILE = path.resolve(process.cwd(), "triangles_found.txt");
