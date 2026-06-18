@@ -9,16 +9,19 @@ const client = new RestClientV5({
 });
 
 const CONCURRENCY_LIMIT = 10;
-const INTERVAL = "5";
 
-// файл результата
+// таймфреймы
+const TIMEFRAMES = [
+  { label: "5m", interval: "5" },
+  { label: "15m", interval: "15" },
+  { label: "30m", interval: "30" },
+  { label: "1h", interval: "60" },
+] as const;
+
 const OUTPUT_FILE = path.resolve(process.cwd(), "triangles_found.txt");
 
-// безопасный append
-function writeToFile(data: string) {
-  fs.appendFileSync(OUTPUT_FILE, data + "\n", {
-    encoding: "utf8",
-  });
+function writeToFile(obj: any) {
+  fs.appendFileSync(OUTPUT_FILE, JSON.stringify(obj) + "\n", "utf8");
 }
 
 async function getSpotPairs(): Promise<string[]> {
@@ -36,12 +39,12 @@ async function getSpotPairs(): Promise<string[]> {
   }
 }
 
-async function scanSymbol(symbol: string) {
+async function scanSymbol(symbol: string, interval: string, tfLabel: string) {
   try {
     const res = await client.getKline({
       category: "spot",
       symbol,
-      interval: INTERVAL as any,
+      interval: interval as any,
       limit: 120,
     });
 
@@ -71,33 +74,33 @@ async function scanSymbol(symbol: string) {
 
     const barsToApex = result.apexIndex - lastIndex;
 
-    const line = [
-      `SYMBOL=${symbol}`,
-      `PRICE=${last?.close}`,
-      `RESISTANCE=${resistance.toFixed(6)}`,
-      `SUPPORT=${support.toFixed(6)}`,
-      `APEX_IN=${barsToApex}`,
-      `TIME=${new Date().toISOString()}`,
-    ].join(" | ");
+    const payload = {
+      symbol,
+      timeframe: tfLabel,
+      price: last?.close,
+      resistance,
+      support,
+      apexInBars: barsToApex,
+      time: new Date().toISOString(),
+    };
 
-    // консоль
-    console.log("\n📐 TRIANGLE FOUND:", symbol);
-    console.log(line);
+    // консоль (структурно)
+    console.log(`📐 ${symbol} [${tfLabel}]`, payload);
 
-    // файл
-    writeToFile(line);
+    // файл (JSONL)
+    writeToFile(payload);
   } catch {
-    // игнор ошибок Bybit
+    // игнор ошибок
   }
 }
 
 export async function mainScanner() {
-  console.log("🚀 Scanner started...");
+  console.log("🚀 Multi-TF scanner started...");
 
-  // создаём/очищаем файл перед запуском
-  fs.writeFileSync(OUTPUT_FILE, "=== TRIANGLE SCANNER LOG ===\n");
+  fs.writeFileSync(OUTPUT_FILE, "", "utf8");
 
   const pairs = await getSpotPairs();
+
   console.log(`📊 USDT pairs: ${pairs.length}`);
 
   let index = 0;
@@ -105,8 +108,13 @@ export async function mainScanner() {
   async function worker() {
     while (index < pairs.length) {
       const i = index++;
-      if (pairs[i]) {
-        await scanSymbol(pairs[i]);
+      const symbol = pairs[i];
+
+      if (!symbol) continue;
+
+      // сканим ВСЕ таймфреймы
+      for (const tf of TIMEFRAMES) {
+        await scanSymbol(symbol, tf.interval, tf.label);
       }
     }
   }
