@@ -42,7 +42,7 @@ async function getSpotPairs(): Promise<string[]> {
 async function scanSymbol(symbol: string, interval: string, tfLabel: string) {
   try {
     const res = await client.getKline({
-      category: "spot",
+      category: "linear",
       symbol,
       interval: interval as any,
       limit: 120,
