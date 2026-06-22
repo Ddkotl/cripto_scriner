@@ -1,9 +1,7 @@
-{"symbol":"DYDXUSDT","timeframe":"1h","price":0.12315,"resistance":0.11835223609911648,"support":0.11822193940350324,"apexInBars":1,"time":"2026-06-21T14:40:23.060Z"}
-{"symbol":"ALGOUSDT","timeframe":"30m","price":0.09198,"resistance":0.09402894084215965,"support":0.0930455978410026,"apexInBars":37,"time":"2026-06-21T14:40:24.346Z"}
-{"symbol":"GALAUSDT","timeframe":"1h","price":0.002662,"resistance":0.0026406594159746207,"support":0.0026127511734828964,"apexInBars":26,"time":"2026-06-21T14:40:25.854Z"}
-{"symbol":"SSVUSDT","timeframe":"15m","price":2.345,"resistance":2.3795281249999993,"support":2.3639322211242204,"apexInBars":26,"time":"2026-06-21T14:40:30.974Z"}
-{"symbol":"BRETTUSDT","timeframe":"15m","price":0.005835,"resistance":0.005877420742293359,"support":0.005871722023920767,"apexInBars":5,"time":"2026-06-21T14:40:36.434Z"}
-{"symbol":"BBUSDT","timeframe":"1h","price":0.02257,"resistance":0.02232390080363303,"support":0.0220236654306847,"apexInBars":27,"time":"2026-06-21T14:40:37.467Z"}
-{"symbol":"VIRTUALUSDT","timeframe":"1h","price":0.6033,"resistance":0.6080099504828032,"support":0.600136266816144,"apexInBars":26,"time":"2026-06-21T14:40:40.871Z"}
-{"symbol":"VANAUSDT","timeframe":"30m","price":1.1539,"resistance":1.155677327969583,"support":1.1494161736210653,"apexInBars":17,"time":"2026-06-21T14:40:41.763Z"}
-{"symbol":"BLENDUSDT","timeframe":"5m","price":0.05974,"resistance":0.060041930149899565,"support":0.05955976242624291,"apexInBars":38,"time":"2026-06-21T14:40:52.760Z"}
+{"symbol":"AXSUSDT","timeframe":"5m","price":1.043,"resistance":1.0473920236336784,"support":1.042365500418292,"apexInBars":27,"time":"2026-06-22T17:52:00.624Z"}
+{"symbol":"SSVUSDT","timeframe":"5m","price":2.326,"resistance":2.3592226408912187,"support":2.3470290304785544,"apexInBars":36,"time":"2026-06-22T17:52:10.310Z"}
+{"symbol":"COREUSDT","timeframe":"15m","price":0.02783,"resistance":0.027979956833666733,"support":0.027771706350810523,"apexInBars":32,"time":"2026-06-22T17:52:10.508Z"}
+{"symbol":"MERLUSDT","timeframe":"15m","price":0.02154,"resistance":0.021935294360304086,"support":0.021734317353573486,"apexInBars":31,"time":"2026-06-22T17:52:16.079Z"}
+{"symbol":"TAIKOUSDT","timeframe":"5m","price":0.07219,"resistance":0.0730521726539337,"support":0.07249127335004364,"apexInBars":37,"time":"2026-06-22T17:52:16.828Z"}
+{"symbol":"MOVEUSDT","timeframe":"1h","price":0.01184,"resistance":0.011904839378308763,"support":0.011805232179226062,"apexInBars":14,"time":"2026-06-22T17:52:20.998Z"}
+{"symbol":"ICNTUSDT","timeframe":"1h","price":0.1757,"resistance":0.18291492177782445,"support":0.1805705330437672,"apexInBars":23,"time":"2026-06-22T17:52:25.681Z"}
